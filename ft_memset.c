@@ -1,5 +1,5 @@
 #include "libft.h"
-void *memset(void *b, int c, size_t len)
+void *ft_memset(void *b, int c, size_t len)
 {
 	char *p;
 	size_t i;
@@ -8,5 +8,5 @@ void *memset(void *b, int c, size_t len)
 	i = 0;
 	while (i < len)
         	*(p + i) = c;
-    	return s; 
+    return (b); 
 }
