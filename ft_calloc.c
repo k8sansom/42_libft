@@ -1,17 +1,26 @@
 #include <stdlib.h>
 #include "libft.h"
-void *calloc(size_t count, size_t size)
+void *ft_calloc(size_t count, size_t size)
 {
 	void *ptr;
+	size_t val;
 	
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-        	return NULL;
+	val = count * size;
+	ptr = malloc(val);
+	if (!ptr)
+        	return (NULL);
     
     else
 	{
-		ft_bzero(ptr, count * size);
-        	return ptr;
+		char *p;
+	
+		p = (char *)ptr;
+		while (val > 0)
+		{
+			*p++ = 0;
+			val--;
+		}
 	}
+	return (ptr);
 }
 
