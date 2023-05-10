@@ -4,7 +4,7 @@ char *ft_strdup(const char *s)
 {
 	size_t	len;
 	size_t	i;
-	char *dest;
+	char	*dest;
 
 	len = ft_strlen(s) + 1;
 	i = 0;
