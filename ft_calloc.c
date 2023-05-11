@@ -1,11 +1,11 @@
 #include <stdlib.h>
 #include "libft.h"
-void *ft_calloc(size_t count, size_t size)
+void *ft_calloc(size_t nmemb, size_t size)
 {
 	void *ptr;
 	size_t val;
 	
-	val = count * size;
+	val = nmemb * size;
 	ptr = malloc(val);
 	if (!ptr)
         	return (NULL);
@@ -21,6 +21,6 @@ void *ft_calloc(size_t count, size_t size)
 			val--;
 		}
 	}
-	return (ptr);
+	return ((void *)ptr);
 }
 
