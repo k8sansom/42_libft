@@ -1,4 +1,17 @@
-#include <libft.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksansom <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 16:52:28 by ksansom           #+#    #+#             */
+/*   Updated: 2023/05/12 16:53:31 by ksansom          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t	i;
@@ -11,8 +24,7 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 		    dest[i] = src[i];
 		    i++;
 	    }
-	    dest[i] = '\0';
-	
+	    dest[i] = '\0';	
     }
 	return (size);
 }

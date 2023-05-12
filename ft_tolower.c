@@ -6,14 +6,14 @@
 /*   By: ksansom <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:44:03 by ksansom           #+#    #+#             */
-/*   Updated: 2023/05/03 10:45:59 by ksansom          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:30:51 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_lower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		return (c + 32);
-	else	
+	else
 		return (c);
 }

@@ -6,11 +6,12 @@
 /*   By: ksansom <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:17:38 by ksansom           #+#    #+#             */
-/*   Updated: 2023/05/03 12:01:29 by ksansom          ###   ########.fr       */
+/*   Updated: 2023/05/12 16:52:15 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int ft_atoi(const char *str)
 {
 	size_t	result;
