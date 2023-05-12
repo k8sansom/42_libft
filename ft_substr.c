@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-char *ft_substr(const char *s, unsigned int start, size_t len)
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	sub_len;
 	size_t	i;
@@ -28,7 +29,6 @@ char *ft_substr(const char *s, unsigned int start, size_t len)
 	{
 		dest[i] = s[start + i];
 		i++;
-		
 	}
 	dest[i] = '\0';
 	return (dest);

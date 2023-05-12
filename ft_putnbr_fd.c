@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-void ft_putnbr_fd(int n, int fd)
+
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	nb;
-	char	c;
+	unsigned int	nb;
+	char			c;
 
 	if (n < 0)
 	{
