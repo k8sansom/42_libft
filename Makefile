@@ -1,27 +1,20 @@
 NAME = libft.a
-#Name of our executable file
 
 INCLUDE = ./libft.h
-#It's for header
 
 CC = cc
 CCFLAG = -Wall -Wextra -Werror
-#for compile and compile flags
 
 RM = rm -f
-#for delete(clean) files
 
-SRCS = 
-#our source files. I want to check it so just use two example files
+SRCS 	= 	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 
 OBJS = $(SRCS:.c=.o)
-#our objects files. SRCS.c -> SRCS.o It means it ganna be chage the end of file from .c to .o. File name is same.
 
 all: $(NAME)
-#It is default command of Makefile. It follow the rule of $(NAME)
+
 $(NAME): $(OBJS)
-	$(CC) $(CCFLAG) $(OBJS) -o $(NAME)
-#It links OBJS files and makes a executable file
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CCFLAG) -c $< -o $@
@@ -33,10 +26,16 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-#delete all object files and rush-02
+	$(RM) $(OBJS)
+	$(RM) libft.so
 
 re: fclean all
 #restart. clean and start all again
 
 .PHONY: all clean fclean re
 #ignore same file name like 'all', 'clean', etc.
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS)
+	$(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)

@@ -8,8 +8,11 @@ char *ft_itoa(int n)
 
 	len = 1;
 	temp = n / 10;
-	while (temp > 0)
+	while (temp != 0)
+	{
 		len++;
+		temp /= 10;
+	}
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
