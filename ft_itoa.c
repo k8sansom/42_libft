@@ -28,45 +28,51 @@ static size_t	digit_count(long n)
 	return (i);
 }
 
-static void	convert_str(long n, char *str, size_t count)
-{
-	int		j;
-	long 	temp;
-
-	j = count;
-	temp = n;
-	while (temp != 0)
-	{
-		str[j] = '0' + (n % 10);
-		temp /= 10;
-		j--;
-	}
-}
-
 char *ft_itoa(int n)
 {
 	size_t	size;
 	char	*str;
 	long	num;
 
-	num = n;
-	size = digit_count(num);
-	if (num > 0)
-		num = num;
+	size = digit_count(n);
+	if (n >= 0)
+		num = n;
 	else
-		num = -num;
+		num = -(long)n;
 	str = (char *)malloc((size + 1) * sizeof(char));
 	if (!str)
 		return (0);
-	str[size - 1] = '\0';
+	str[size--] = '\0';
 	while (num > 0)
 	{
-		*(str + size--) = num % 10 + '0';
+		str[size--] = num % 10 + '0';
 		num /= 10;
 	}
-	if (size == 0 && str[1] == '\0')
-		*(str + size) = '0';
-	else if (size == 0 && str[1] != '\0')
-		*(str + size) = '-';
+    if (n == 0)
+        str[size] = '0';
+    else if (n < 0)
+        str[size] = '-';
 	return (str);
 }
+
+/*#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num = -2147483648;
+    char *str = ft_itoa(num);
+    
+    if (str != NULL)
+    {
+        printf("Integer: %d\n", num);
+        printf("String: %s\n", str);
+        free(str); // Remember to free the dynamically allocated memory
+    }
+    else
+    {
+        printf("Memory allocation failed.\n");
+    }
+    
+    return 0;
+}*/
