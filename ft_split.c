@@ -12,22 +12,22 @@
 
 #include "libft.h"
 
-static int	count_wrds(const char *str, char c)
+static int	count_splits(const char *str, char c)
 {
 	int	i;
-	int	in_word;
+	int	in_split;
 
 	i = 0;
-	in_word = 0;
+	in_split = 0;
 	while (*str)
 	{
-		if (*str != c && in_word == 0)
+		if (*str != c && in_split == 0)
 		{
-			in_word = 1;
+			in_split = 1;
 			i++;
 		}
 		else if (*str == c)
-			in_word = 0;
+			in_split = 0;
 		str++;
 	}
 	return (i);
@@ -53,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
-	split = malloc((count_wrds(s, c) + 1) * sizeof(char));
+	split = malloc((count_splits(s, c) + 1) * sizeof(char));
 	if (!s || !split)
 		return (0);
 	i = 0;

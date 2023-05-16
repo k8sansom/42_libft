@@ -12,38 +12,61 @@
 
 #include "libft.h"
 
-static size_t	get_digits(int n)
+static size_t	digit_count(long n)
 {
 	size_t	i;
 
-	i = 1;
-	while (n /= 10)
+	if (n > 0)
+		i = 0;
+	else
+		i = 1;
+	while (n) 
+	{
+		n /= 10;
 		i++;
+	}
 	return (i);
 }
 
-char			*ft_itoa(int n)
+static void	convert_str(long n, char *str, size_t count)
 {
-	char		*str_num;
-	size_t		digits;
-	long int	num;
+	int		j;
+	long 	temp;
+
+	j = count;
+	temp = n;
+	while (temp != 0)
+	{
+		str[j] = '0' + (n % 10);
+		temp /= 10;
+		j--;
+	}
+}
+
+char *ft_itoa(int n)
+{
+	size_t	size;
+	char	*str;
+	long	num;
 
 	num = n;
-	digits = get_digits(n);
-	if (n < 0)
-	{
-		num *= -1;
-		digits++;
-	}
-	if (!(str_num = (char *)malloc(sizeof(char) * (digits + 1))))
+	size = digit_count(num);
+	if (num > 0)
+		num = num;
+	else
+		num = -num;
+	str = (char *)malloc((size + 1) * sizeof(char));
+	if (!str)
 		return (0);
-	*(str_num + digits) = 0;
-	while (digits--)
+	str[size - 1] = '\0';
+	while (num > 0)
 	{
-		*(str_num + digits) = num % 10 + '0';
-		num = num / 10;
+		*(str + size--) = num % 10 + '0';
+		num /= 10;
 	}
-	if (n < 0)
-		*(str_num + 0) = '-';
-	return (str_num);
+	if (size == 0 && str[1] == '\0')
+		*(str + size) = '0';
+	else if (size == 0 && str[1] != '\0')
+		*(str + size) = '-';
+	return (str);
 }

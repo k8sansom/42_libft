@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
 
-# ifndef LIBFT_H
+#ifndef LIBFT_H
 # define LIBFT_H
 
 int		ft_isalpha(int c);
