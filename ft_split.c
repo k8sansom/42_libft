@@ -14,61 +14,57 @@
 
 static int	count_splits(const char *str, char c)
 {
-	int	i;
-	int	in_split;
+	size_t	i;
 
 	i = 0;
-	in_split = 0;
 	while (*str)
 	{
-		if (*str != c && in_split == 0)
+		if (*str != c)
 		{
-			in_split = 1;
 			i++;
+			while (*str && *str != c)
+				str++;
 		}
-		else if (*str == c)
-			in_split = 0;
-		str++;
+		else
+			str++;
 	}
 	return (i);
 }
 
-static char	*word_dup(const char *str, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc(sizeof(char) * (end - start + 1));
-	while (start < end)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
-}
-
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	int		index;
-	char	**split;
+	char	**arr;
+	int		i;
+	int		j;
 
-	split = malloc((count_splits(s, c) + 1) * sizeof(char));
-	if (!s || !split)
+	if (!s)
 		return (0);
 	i = 0;
-	j = 0;
-	index = -1;
-	while (i++ <= ft_strlen(s))
+	arr = malloc(sizeof(char *) * (count_splits(s, c) + 1));
+	if (!arr)
+		return (0);
+	while (s)
 	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		if (*s != c)
 		{
-			split[j++] = word_dup(s, index, i);
-			index = -1;
+			j = 0;
+			while (*s && *s != c && ++j)
+				s++;
+			arr[i++] = ft_substr(s - j, 0, j);
 		}
+		else
+			s++;
 	}
-	split[j] = 0;
-	return (split);
+	arr[i] = 0;
+	return (arr);
+}
+
+#include <stdio.h>
+int	main(void)
+{
+	char const	s[] = "How we doing over here?";
+	char c = " ";
+
+	printf("split: %s\n", ft_split(s, c));
+	return (0);
 }
