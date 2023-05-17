@@ -20,7 +20,7 @@ static size_t	digit_count(long n)
 		i = 0;
 	else
 		i = 1;
-	while (n) 
+	while (n)
 	{
 		n /= 10;
 		i++;
@@ -28,7 +28,7 @@ static size_t	digit_count(long n)
 	return (i);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	size_t	size;
 	char	*str;
@@ -48,10 +48,10 @@ char *ft_itoa(int n)
 		str[size--] = num % 10 + '0';
 		num /= 10;
 	}
-    if (n == 0)
-        str[size] = '0';
-    else if (n < 0)
-        str[size] = '-';
+	if (n == 0)
+		str[size] = '0';
+	else if (n < 0)
+		str[size] = '-';
 	return (str);
 }
 
