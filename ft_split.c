@@ -46,19 +46,28 @@ static char	*ft_dup_splits(const char *str, int start, int finish)
 	return (split);
 }
 
-char	**ft_split(char const *s, char c)
+static void	ft_free_arr(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free (arr);
+}
+
+static char	**ft_actual(char **arr, char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	int		index;
-	char	**arr;
 
 	i = 0;
 	j = 0;
 	index = -1;
-	arr = malloc(sizeof(char *) * (ft_count_splits(s, c) + 1));
-	if (!arr || !s)
-		return (0);
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && index < 0)
@@ -67,6 +76,8 @@ char	**ft_split(char const *s, char c)
 			&& index >= 0 && index < (int)i)
 		{
 			arr[j++] = ft_dup_splits(s, index, i);
+			if (!(arr[j - 1]))
+				ft_free_arr(arr);
 			index = -1;
 		}
 		i++;
@@ -75,20 +86,18 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-/*#include <stdio.h>
+char	**ft_split(char const *s, char c)
+{
+	char	**arr;
 
-void free_split(char **split) {
-    if (split == NULL) {
-        return;
-    }
-
-    char **temp = split;
-    while (*temp != NULL) {
-        free(*temp);
-        temp++;
-    }
-    free(split);
+	arr = malloc(sizeof(char *) * (ft_count_splits(s, c) + 1));
+	if (!arr || !s)
+		return (0);
+	ft_actual(arr, s, c);
+	return (arr);
 }
+
+/*#include <stdio.h>
 
 void print_split(char **split) {
     if (split == NULL) {
@@ -104,7 +113,7 @@ void print_split(char **split) {
 }
 
 int main() {
-    char const *str = "Hello ";
+    char const *str = "Hello Kate how are you?";
     char delimiter = ' ';
 
     // Split the string
@@ -113,9 +122,6 @@ int main() {
     // Print the split array
     printf("Split Array:\n");
     print_split(split);
-
-    // Free the memory allocated for the split array
-    free_split(split);
-
+	free(split);
     return 0;
 }*/
