@@ -59,7 +59,7 @@ static char	**ft_actual(char **arr, char const *s, char c)
 			j = 0;
 			while (*s && *s != c && ++j)
 				++s;
-			arr[i++] = ft_substr(s - j, 0, j);
+			arr[i++] = ft_substr((s - j), 0, j);
 			if (arr[i - 1] == 0)
 			{
 				ft_free_arr(arr);
@@ -77,10 +77,12 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 
-	arr = malloc(sizeof(char *) * (ft_count_splits(s, c) + 1));
-	if (!arr || !s)
+	if (!s)
 		return (0);
-	ft_actual(arr, s, c);
+	arr = malloc(sizeof(char *) * (ft_count_splits(s, c) + 1));
+	if (!arr)
+		return (0);
+	arr = ft_actual(arr, s, c);
 	return (arr);
 }
 
