@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksansom <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:50:24 by ksansom           #+#    #+#             */
-/*   Updated: 2023/05/12 16:51:28 by ksansom          ###   ########.fr       */
+/*   Updated: 2023/06/22 14:03:13 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdarg.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -66,5 +68,20 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ft_printf(const char *format, ...);
+int		ft_search_args(va_list arg, char c);
+
+int		ft_print_char(char c);
+int		ft_print_str(const char *str);
+void	ft_putnbr(int n);
+void	ft_putunsigned(unsigned int nb);
+int		ft_print_int(int n);
+
+int		ft_print_pointer(const void *ptr);
+int		ft_print_pval(const void *ptr);
+int		ft_print_unsigned_int(unsigned int nb);
+int		ft_print_hex_up(unsigned int nb);
+int		ft_print_hex_low(unsigned int nb);
 
 #endif

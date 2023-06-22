@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksansom <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ksansom <ksansom@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 18:07:06 by ksansom           #+#    #+#             */
-/*   Updated: 2023/05/12 18:07:09 by ksansom          ###   ########.fr       */
+/*   Updated: 2023/05/31 10:19:35 by ksansom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strdup(const char *s)
 		return (0);
 	while (s[i])
 	{
-		dest[i] = s[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)s)[i];
 		i++;
 	}
 	dest[i] = '\0';
